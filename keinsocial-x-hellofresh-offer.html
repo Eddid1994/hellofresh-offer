@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>k&amp;einsocial ✕ HelloFresh — TikTok Media Buying &amp; In-Housing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161210;          /* warm near-black */
+    --ink-2:#3a332f;
+    --paper:#FAF9F5;        /* k&einsocial cream */
+    --paper-2:#F1EEE6;
+    --plum:#4F0147;
+    --plum-2:#6a1761;
+    --pink:#FF0A54;
+    --lime:#91C11E;         /* HelloFresh green */
+    --lime-deep:#5f7f12;
+    --line:rgba(22,18,16,.16);
+    --line-soft:rgba(22,18,16,.09);
+    --mono:ui-monospace,"SF Mono","Geist Mono",Menlo,Consolas,monospace;
+    --grotesk:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --serif:"Fraunces",Georgia,serif;
+    --maxw:1280px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--grotesk);
+    background:var(--paper);
+    color:var(--ink);
+    font-size:17px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+  @media(max-width:680px){.wrap{padding:0 22px}}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--pink);color:#fff}
+
+  /* ---- type helpers ---- */
+  .mono{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+  .serif-i{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+  .display{font-weight:800;letter-spacing:-.035em;line-height:.95}
+  .idx{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--plum)}
+  .ul-line{box-shadow:inset 0 -2px 0 0 var(--pink)}
+  .lime-line{box-shadow:inset 0 -2px 0 0 var(--lime)}
+
+  /* ===== NAV ===== */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(250,249,245,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .lock{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:18px}
+  .lock .amp{color:var(--pink)}
+  .lock .x{font-weight:500;opacity:.45;font-size:15px;transform:translateY(-1px)}
+  .lock .hf{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--lime-deep);letter-spacing:-.01em}
+  .nav nav{display:flex;gap:30px;align-items:center}
+  .nav nav a{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);transition:color .2s}
+  .nav nav a:hover{color:var(--ink)}
+  .nav .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+  @media(max-width:900px){.nav nav a{display:none}}
+
+  /* ===== HERO ===== */
+  .hero{padding:70px 0 0}
+  .hero .meta{display:flex;gap:26px;flex-wrap:wrap;color:var(--ink-2);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:46px}
+  .hero h1{font-size:clamp(44px,8.4vw,104px)}
+  .hero h1 .blk{display:block}
+  .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+  .hero h1 .pink{color:var(--pink)}
+  .hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:48px;margin-top:52px;align-items:end}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+  .hero-lead{font-size:clamp(19px,2.3vw,24px);line-height:1.45;max-width:30ch;color:var(--ink)}
+  .hero-lead b{font-weight:800}
+  .spec{border-top:1px solid var(--ink)}
+  .spec .row{display:grid;grid-template-columns:90px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line-soft)}
+  .spec .row span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);padding-top:3px}
+  .spec .row span:last-child{font-weight:700;font-size:15.5px}
+  .spec .row .em{color:var(--lime-deep)}
+
+  /* marquee */
+  .marquee{margin-top:60px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);overflow:hidden;background:var(--ink);color:var(--paper)}
+  .marquee .track{display:inline-flex;white-space:nowrap;will-change:transform;animation:scroll 34s linear infinite}
+  .marquee span{font-weight:800;letter-spacing:-.02em;font-size:clamp(20px,2.6vw,30px);padding:16px 0;display:inline-flex;align-items:center}
+  .marquee b{color:var(--lime);margin:0 26px;font-weight:800}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== PROOF STRIP ===== */
+  .proof{background:var(--ink);color:var(--paper)}
+  .proof .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .proof .cell{padding:40px 28px 44px;border-left:1px solid rgba(255,255,255,.14)}
+  .proof .cell:first-child{border-left:0;padding-left:0}
+  .proof .cell .n{font-weight:800;letter-spacing:-.04em;font-size:clamp(38px,5.4vw,64px);line-height:1}
+  .proof .cell .n .a{color:var(--lime)}
+  .proof .cell .l{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:14px;max-width:22ch}
+  @media(max-width:780px){.proof .wrap{grid-template-columns:1fr 1fr}.proof .cell{padding:30px 22px;border-left:1px solid rgba(255,255,255,.14)!important}.proof .cell:nth-child(odd){border-left:0!important;padding-left:0}}
+
+  /* ===== SECTION SHELL ===== */
+  section.blk{padding:clamp(80px,11vw,150px) 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:baseline;margin-bottom:54px}
+  .sec-head .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+  .sec-head .kick b{color:var(--pink)}
+  .sec-head h2{font-size:clamp(30px,5.2vw,68px);font-weight:800;letter-spacing:-.035em;line-height:.98;max-width:18ch;justify-self:start}
+  .sec-head h2 em{font-family:var(--serif);font-style:italic;font-weight:400}
+  .lead-2{font-size:clamp(18px,2vw,21px);max-width:62ch;color:var(--ink-2);line-height:1.5}
+
+  /* services editorial list */
+  .svc{border-top:1px solid var(--ink);margin-top:50px}
+  .svc a.item{display:grid;grid-template-columns:64px 1.1fr 1fr auto;gap:24px;align-items:center;padding:30px 8px;border-bottom:1px solid var(--line);transition:padding .3s ease,background .3s ease;position:relative}
+  .svc a.item:hover{padding-left:24px;padding-right:0;background:linear-gradient(90deg,rgba(145,193,30,.10),transparent 70%)}
+  .svc .i-idx{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.1em}
+  .svc .i-name{font-size:clamp(24px,3.4vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .svc .i-name .pri{font-family:var(--mono);font-size:11px;letter-spacing:.12em;background:var(--lime);color:var(--ink);padding:4px 9px;border-radius:4px;vertical-align:middle;margin-left:12px;font-weight:600}
+  .svc .i-desc{color:var(--ink-2);font-size:15.5px;max-width:42ch}
+  .svc .i-arrow{justify-self:end;color:var(--ink);transition:transform .3s ease}
+  .svc a.item:hover .i-arrow{transform:translate(6px,-6px);color:var(--lime-deep)}
+  @media(max-width:820px){.svc a.item{grid-template-columns:40px 1fr;gap:8px 14px}.svc .i-desc{grid-column:2}.svc .i-arrow{display:none}}
+
+  /* clients */
+  .clients{border-top:1px solid var(--ink);border-left:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);margin-top:48px}
+  .clients .c{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 20px;min-height:108px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;letter-spacing:-.01em;font-size:17px;color:var(--ink);transition:.25s}
+  .clients .c:hover{background:var(--plum);color:#fff}
+  @media(max-width:820px){.clients{grid-template-columns:repeat(2,1fr)}}
+  .quote-stat{margin-top:54px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(24px,3.6vw,42px);line-height:1.2;letter-spacing:-.02em;max-width:24ch}
+  .quote-stat .a{color:var(--pink)}
+  .quote-stat .b{color:var(--lime-deep)}
+  .note{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-top:26px}
+
+  /* why tiktok split */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+  @media(max-width:880px){.split{grid-template-columns:1fr;gap:36px}}
+  .statement{font-size:clamp(26px,3.6vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.04;margin-bottom:28px}
+  .statement em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--lime-deep)}
+  .arglist{list-style:none}
+  .arglist li{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--line)}
+  .arglist li .n{font-family:var(--mono);font-size:12px;color:var(--pink);letter-spacing:.1em;padding-top:3px}
+  .arglist li p{font-size:16.5px;color:var(--ink)}
+  .panel{background:var(--ink);color:var(--paper);border-radius:6px;padding:38px 34px;position:relative;overflow:hidden}
+  .panel:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-120px;top:-120px;background:radial-gradient(circle,rgba(145,193,30,.28),transparent 65%)}
+  .panel h3{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:24px;position:relative;z-index:2}
+  .panel .pr{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:16px 0;border-top:1px solid rgba(255,255,255,.14);position:relative;z-index:2}
+  .panel .pr:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+  .panel .pr .k{font-size:16px;font-weight:700}
+  .panel .pr .v{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--lime)}
+
+  /* approach steps */
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--ink);margin-top:50px}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  .stp{padding:42px 40px 44px;border-bottom:1px solid var(--line);position:relative}
+  .stp:first-child{border-right:1px solid var(--line)}
+  @media(max-width:860px){.stp:first-child{border-right:0}}
+  .stp .ghost{font-weight:800;font-size:clamp(70px,9vw,120px);letter-spacing:-.05em;line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--line);margin-bottom:8px}
+  .stp .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  .stp .tag b{color:var(--pink)}
+  .stp.two .tag b{color:var(--lime-deep)}
+  .stp h3{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.03em;margin:10px 0 22px}
+  .stp ul{list-style:none}
+  .stp li{padding:11px 0 11px 26px;border-top:1px solid var(--line-soft);font-size:15.5px;color:var(--ink);position:relative}
+  .stp li:before{content:"";position:absolute;left:2px;top:18px;width:8px;height:8px;background:var(--pink);border-radius:1px}
+  .stp.two li:before{background:var(--lime)}
+  .stp li b{font-weight:800}
+
+  /* framework flow */
+  .fw{margin-top:54px;background:var(--plum);color:#fff;border-radius:6px;padding:clamp(30px,4vw,52px);position:relative;overflow:hidden}
+  .fw .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:14px}
+  .fw h3{font-size:clamp(22px,2.8vw,34px);font-weight:800;letter-spacing:-.03em;max-width:24ch}
+  .fw p{color:rgba(255,255,255,.82);max-width:64ch;margin-top:14px;font-size:16.5px}
+  .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:18px;align-items:stretch;margin-top:40px}
+  @media(max-width:780px){.flow{grid-template-columns:1fr;gap:14px}.flow .ar{transform:rotate(90deg);justify-self:start;margin-left:18px}}
+  .node{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:24px}
+  .node .ph{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+  .node h4{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:10px 0 8px}
+  .node p{color:rgba(255,255,255,.78);font-size:14px;margin:0}
+  .flow .ar{align-self:center;color:var(--lime);font-size:22px;font-weight:800}
+
+  /* ===== GANTT ===== */
+  .plan-wrap{margin-top:48px;border:1px solid var(--ink);border-radius:6px;background:#fff;overflow-x:auto}
+  .gantt{min-width:820px;padding:8px 0}
+  .g-head{display:grid;grid-template-columns:250px repeat(16,1fr)}
+  .g-head .mh{grid-row:1;text-align:left;padding:16px 0 6px 12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--plum);border-left:1px solid var(--line)}
+  .g-weeks{display:grid;grid-template-columns:250px repeat(16,1fr);border-bottom:1px solid var(--ink)}
+  .g-weeks .c0{padding:6px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-2);text-transform:uppercase}
+  .g-weeks span{font-family:var(--mono);font-size:9.5px;color:#a59ea6;text-align:center;padding:6px 0;border-left:1px solid var(--line-soft)}
+  .grow{display:grid;grid-template-columns:250px repeat(16,1fr);align-items:center;border-bottom:1px solid var(--line-soft)}
+  .grow:last-child{border-bottom:0}
+  .grow .t{font-size:13px;font-weight:700;color:var(--ink);padding:0 12px;display:flex;align-items:center;gap:9px;line-height:1.2}
+  .grow .t .pin{width:8px;height:8px;border-radius:2px;flex:none}
+  .gtrack{grid-column:2 / span 16;position:relative;height:44px}
+  .bar{position:absolute;top:12px;height:20px;border-radius:3px;display:flex;align-items:center;padding:0 9px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:#fff;white-space:nowrap;overflow:hidden}
+  .b-plum{background:var(--plum)}
+  .b-pink{background:var(--pink)}
+  .b-lime{background:var(--lime);color:var(--ink)}
+  .b-ink{background:var(--ink-2)}
+  .b-pinkS{background:#f3a9c4;color:var(--ink)}
+  .legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:8px;vertical-align:0}
+  .plan-note{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-2);margin-top:16px;text-transform:uppercase}
+
+  /* ===== SUPPORT (plum) ===== */
+  .blk.dark{background:var(--plum);color:#fff;border-bottom:0}
+  .blk.dark .sec-head .kick{color:rgba(255,255,255,.7)}
+  .blk.dark .sec-head .kick b{color:var(--lime)}
+  .blk.dark .sec-head h2{color:#fff}
+  .blk.dark .lead-2{color:rgba(255,255,255,.82)}
+  .sup{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.22);margin-top:50px}
+  @media(max-width:820px){.sup{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.sup{grid-template-columns:1fr}}
+  .sup .s{padding:34px 26px 38px;border-bottom:1px solid rgba(255,255,255,.22);border-right:1px solid rgba(255,255,255,.22)}
+  .sup .s:nth-child(4n){border-right:0}
+  .sup .s .n{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--lime)}
+  .sup .s h3{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:18px 0 10px}
+  .sup .s p{color:rgba(255,255,255,.8);font-size:14.5px}
+
+  /* ===== PRICING ===== */
+  .price-top{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;margin-top:10px}
+  @media(max-width:860px){.price-top{grid-template-columns:1fr;gap:20px}}
+  .bignum{font-weight:800;letter-spacing:-.05em;line-height:.85;font-size:clamp(64px,12vw,150px)}
+  .bignum .cur{font-size:.42em;vertical-align:.42em;color:var(--pink);letter-spacing:0}
+  .bignum .per{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);font-weight:500;margin-top:10px}
+  .price-break{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--ink-2);text-transform:uppercase;text-align:right;line-height:1.9}
+  @media(max-width:860px){.price-break{text-align:left}}
+  .price-break b{color:var(--ink);font-weight:700}
+  .chan{border-top:1px solid var(--ink);margin-top:46px}
+  .chan .r{display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:center;padding:18px 6px;border-bottom:1px solid var(--line)}
+  .chan .r .id{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--plum)}
+  .chan .r .sc{color:var(--ink-2);font-size:15px}
+  .chan .r .am{font-weight:800;font-size:18px;letter-spacing:-.02em}
+  .chan .tot{display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:center;padding:22px 6px;background:var(--ink);color:#fff;border-radius:0 0 6px 6px;margin-top:-1px}
+  .chan .tot .id{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lime)}
+  .chan .tot .sc{color:rgba(255,255,255,.7);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  .chan .tot .am{font-weight:800;font-size:24px;color:#fff}
+  .chan .tot .am .pink{color:var(--pink)}
+  @media(max-width:680px){.chan .r,.chan .tot{grid-template-columns:80px 1fr;gap:8px 14px}.chan .r .am,.chan .tot .am{grid-column:2}}
+  .incl{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--ink);margin-top:54px}
+  @media(max-width:680px){.incl{grid-template-columns:1fr}}
+  .incl div{padding:14px 6px 14px 30px;border-bottom:1px solid var(--line-soft);font-size:15px;position:relative}
+  .incl div:before{content:"—";position:absolute;left:4px;color:var(--lime-deep);font-weight:800}
+  .price-notes{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px}
+  @media(max-width:680px){.price-notes{grid-template-columns:1fr;gap:18px}}
+  .price-notes p{font-size:14.5px;color:var(--ink-2);line-height:1.55;border-left:2px solid var(--pink);padding-left:18px}
+  .price-notes p:last-child{border-left-color:var(--lime)}
+  .price-notes b{color:var(--ink);font-weight:700}
+
+  /* ===== FINAL CTA (lime) ===== */
+  .final{background:var(--lime);color:var(--ink);text-align:left;border-bottom:0}
+  .final h2{font-size:clamp(34px,6.6vw,86px);font-weight:800;letter-spacing:-.04em;line-height:.95;max-width:16ch}
+  .final h2 em{font-family:var(--serif);font-style:italic;font-weight:400}
+  .final .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-deep);margin-bottom:24px}
+  .final p{font-size:19px;max-width:54ch;margin-top:22px;color:#2c2410}
+  .next{display:flex;gap:0;flex-wrap:wrap;margin-top:48px;border-top:1px solid rgba(22,18,16,.25)}
+  .next .ns{flex:1 1 220px;padding:24px 22px;border-right:1px solid rgba(22,18,16,.25)}
+  .next .ns:last-child{border-right:0}
+  .next .ns .n{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--plum)}
+  .next .ns h4{font-size:18px;font-weight:800;letter-spacing:-.02em;margin-top:12px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:42px}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:16px 26px;border-radius:3px;transition:.2s;border:1px solid var(--ink)}
+  .btn.solid{background:var(--ink);color:var(--paper)}
+  .btn.solid:hover{background:var(--plum);border-color:var(--plum)}
+  .btn.out:hover{background:var(--ink);color:var(--lime)}
+
+  /* footer */
+  footer{background:var(--ink);color:rgba(255,255,255,.62)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:30px 40px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  footer .lock{color:#fff;font-family:var(--grotesk);font-size:15px;text-transform:none;letter-spacing:-.02em}
+  footer a{color:var(--lime)}
+
+  /* ===== LEVERAGE WITH AI ===== */
+  .ai-video{position:relative;width:100%;padding-bottom:56.25%;height:0;border:1px solid var(--ink);border-radius:8px;overflow:hidden;background:#000;box-shadow:0 30px 60px -30px rgba(22,18,16,.5)}
+  .ai-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .ai-cap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;margin-top:16px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+  .ai-cap a{color:var(--lime-deep);font-weight:600}
+  .ai-cap a:hover{color:var(--ink)}
+  .mabted{margin-top:40px;background:#000;color:#fff;border:1px solid #333;border-radius:16px;padding:clamp(26px,3.4vw,42px);font-family:'Outfit','Helvetica Neue',Arial,sans-serif;display:grid;grid-template-columns:1.25fr .85fr;gap:36px;align-items:center}
+  @media(max-width:820px){.mabted{grid-template-columns:1fr;gap:24px}}
+  .mabted .ey{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a8a8a}
+  .mabted h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.02em;margin:10px 0 12px;line-height:1}
+  .mabted h3 .dot{color:#3b82f6}
+  .mabted .desc{color:#b3b3b3;font-size:15px;line-height:1.55;max-width:52ch}
+  .mabted .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .mabted .chip{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;padding:7px 12px;border-radius:8px;border:1px solid #333;background:#0d0d0d;color:#fff}
+  .mabted .chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .mabted .trust{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7a7a7a;margin-top:20px}
+  .mabted .aside{border-left:1px solid #333;padding-left:32px}
+  @media(max-width:820px){.mabted .aside{border-left:0;padding-left:0;border-top:1px solid #333;padding-top:24px}}
+  .mabted .aside p{color:#b3b3b3;font-size:14.5px;line-height:1.55}
+  .mabted .aside p b{color:#fff;font-weight:700}
+  .mabted .mlink{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#000;background:#fff;padding:13px 20px;border-radius:8px;transition:.2s}
+  .mabted .mlink:hover{background:#3b82f6;color:#fff}
+
+  /* ===== CONSULTING ===== */
+  .consult{margin-top:26px;border:1px solid var(--ink);border-radius:6px;padding:clamp(24px,3vw,34px) clamp(24px,3vw,36px);display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center;background:var(--paper-2)}
+  @media(max-width:820px){.consult{grid-template-columns:1fr;gap:16px}}
+  .consult .cg{font-weight:800;font-size:clamp(48px,6vw,84px);letter-spacing:-.05em;line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--lime)}
+  .consult .ph{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-deep)}
+  .consult h3{font-size:clamp(21px,2.6vw,30px);font-weight:800;letter-spacing:-.02em;margin:8px 0 8px}
+  .consult p{color:var(--ink-2);font-size:15px;max-width:52ch}
+  .consult .facts{font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;text-align:right;line-height:1.9;color:var(--ink);white-space:nowrap}
+  .consult .facts b{color:var(--lime-deep)}
+  @media(max-width:820px){.consult .facts{text-align:left}}
+  .tier2{margin-top:30px;border:1px solid var(--ink);border-radius:8px;background:var(--paper-2);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:30px 34px}
+  @media(max-width:680px){.tier2{grid-template-columns:1fr;gap:14px}}
+  .tier2 .ph{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-deep)}
+  .tier2 h3{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:8px 0 6px}
+  .tier2 p{color:var(--ink-2);font-size:14.5px;max-width:62ch}
+  .tier2 .amt{font-weight:800;letter-spacing:-.03em;font-size:clamp(36px,5.4vw,56px);white-space:nowrap;text-align:right;line-height:.9}
+  .tier2 .amt span{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:500;margin-top:8px}
+  .b-out{background:transparent;border:1.5px dashed var(--lime-deep);color:var(--lime-deep)}
+
+  /* personal greeting */
+  .greet{margin-top:42px;max-width:62ch;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(18px,2vw,23px);line-height:1.5;color:var(--ink);border-left:3px solid var(--pink);padding-left:24px}
+  .greet b{font-style:italic;font-weight:600;color:var(--plum)}
+  .greet .sig{display:block;margin-top:12px;font-family:var(--mono);font-style:normal;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  @media print{
+    header.nav{position:static}.marquee{display:none}.rv{opacity:1!important;transform:none!important}
+    .btn,.cta-row,.next{display:none!important}
+    section.blk{padding:30px 0}
+    .proof,.panel,.blk.dark,.chan .tot,.fw,.mabted{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .ai-video{min-height:320px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <div class="lock">k<span class="amp">&amp;</span>einsocial <span class="x">✕</span> <span class="hf">HelloFresh</span></div>
+    <nav>
+      <a href="#agency">Agency</a>
+      <a href="#tiktok">TikTok</a>
+      <a href="#approach">Approach</a>
+      <a href="#plan">Plan</a>
+      <a href="#investment">Investment</a>
+      <a href="#ai">AI</a>
+    </nav>
+    <span class="tag">Proposal — Jun 2026</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="meta mono rv">
+      <span>Confidential Proposal</span>
+      <span>TikTok Media Buying &amp; In-Housing</span>
+      <span>Prepared for Guido · HelloFresh</span>
+    </div>
+    <h1 class="display rv">
+      <span class="blk">Own TikTok.</span>
+      <span class="blk">Then own it <em class="pink">in-house.</em></span>
+    </h1>
+    <div class="hero-grid">
+      <p class="hero-lead rv">We take over your <b>six TikTok ad accounts</b>, scale them with a relentless testing engine, and train a HelloFresh in-house buyer to run the whole thing — so the growth stays, with or without us.</p>
+      <div class="spec rv">
+        <div class="row"><span>Client</span><span>HelloFresh</span></div>
+        <div class="row"><span>Channels</span><span>6 × TikTok <span class="em">(lead focus)</span></span></div>
+        <div class="row"><span>Model</span><span>€3,500 / channel / month</span></div>
+        <div class="row"><span>Total</span><span>€21,000 / month</span></div>
+        <div class="row"><span>Ops</span><span class="em">Daily — incl. weekends</span></div>
+      </div>
+    </div>
+    <p class="greet rv">Hi <b>Guido</b> — great speaking with you. Here's exactly how k&amp;einsocial would take HelloFresh's TikTok over, scale it, and hand it to your in-house team for good. Let's build it. <span class="sig">— Edi · k&amp;einsocial</span></p>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>TikTok Media Buying<b>✳</b>Creative Framework<b>✳</b>In-House Enablement<b>✳</b>Daily Scaling<b>✳</b>Weekend Ops<b>✳</b>Cost Caps &amp; Target ROAS<b>✳</b></span>
+      <span>TikTok Media Buying<b>✳</b>Creative Framework<b>✳</b>In-House Enablement<b>✳</b>Daily Scaling<b>✳</b>Weekend Ops<b>✳</b>Cost Caps &amp; Target ROAS<b>✳</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <div class="wrap">
+    <div class="cell"><div class="n">30<span class="a">+</span></div><div class="l">Brands scaled across DACH &amp; EU</div></div>
+    <div class="cell"><div class="n">€3M<span class="a">+</span></div><div class="l">Annual ad spend under management</div></div>
+    <div class="cell"><div class="n">4<span class="a">×</span></div><div class="l">Target ROAS delivered at scale</div></div>
+    <div class="cell"><div class="n">60–120</div><div class="l">Fresh ads shipped per week, 6 channels</div></div>
+  </div>
+</section>
+
+<!-- 01 AGENCY -->
+<section class="blk" id="agency">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick"><b>(01)</b> &nbsp;The Agency</div>
+      <h2>Performance media buyers, <em>not</em> a content shop.</h2>
+    </div>
+    <p class="lead-2 rv">k&amp;einsocial takes over ad accounts, rebuilds them, and scales them with a disciplined, test-first system. We already run <b style="color:var(--ink)">€3M+ in annual ad spend</b> across 30+ brands on Meta, Google &amp; TikTok. For HelloFresh we bring the exact same playbook — pointed entirely at TikTok.</p>
+
+    <div class="svc rv">
+      <a class="item" href="#tiktok">
+        <span class="i-idx">A/01</span>
+        <span class="i-name">TikTok Media Buying<span class="pri">Primary</span></span>
+        <span class="i-desc">Full-funnel takeover, structure, daily optimization and controlled scaling on the channel that matters most.</span>
+        <span class="i-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="item" href="#approach">
+        <span class="i-idx">A/02</span>
+        <span class="i-name">Meta, Google &amp; TikTok Ads</span>
+        <span class="i-desc">The testing and scaling logic we use across the channels that matter for e-commerce growth.</span>
+        <span class="i-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="item" href="#approach">
+        <span class="i-idx">A/03</span>
+        <span class="i-name">E-Commerce Consulting</span>
+        <span class="i-desc">Based on real numbers: creating systems, especially creative systems, for handling multiple ads.</span>
+        <span class="i-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="item" href="#approach">
+        <span class="i-idx">A/04</span>
+        <span class="i-name">In-House Enablement</span>
+        <span class="i-desc">We train your internal buyer until they run TikTok at our standard — and you stop needing an agency.</span>
+        <span class="i-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROOF / CLIENTS -->
+<section class="blk" id="clients">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick"><b>(02)</b> &nbsp;Track Record</div>
+      <h2>Trusted with the account — not just the brief.</h2>
+    </div>
+    <p class="lead-2 rv">A selection of brands we scale and have scaled on Meta, Google &amp; TikTok — from challenger DTC to household names, with monthly ad budgets up to €40K.</p>
+    <div class="clients rv">
+      <div class="c">Bruno&nbsp;Banani</div>
+      <div class="c">Schiesser</div>
+      <div class="c">SIGG&nbsp;Switzerland</div>
+      <div class="c">Fielmann</div>
+      <div class="c">Johnny&nbsp;Urban</div>
+      <div class="c">Ironmaxx</div>
+      <div class="c">Vonmählen</div>
+      <div class="c">German&nbsp;Dream&nbsp;Nails</div>
+      <div class="c">Dr.&nbsp;Emi&nbsp;Arpa</div>
+      <div class="c">Larkson</div>
+      <div class="c">OAK25</div>
+      <div class="c">Blume&nbsp;Ideal</div>
+    </div>
+    <p class="quote-stat rv"><span class="b">€3M+ in annual ad spend.</span> 30+ brands taken over &amp; scaled. <span class="a">Up to 4× target ROAS.</span></p>
+    <p class="note rv">Selected brands k&amp;einsocial works &amp; has worked with</p>
+  </div>
+</section>
+
+<!-- 03 WHY TIKTOK -->
+<section class="blk" id="tiktok">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick"><b>(03)</b> &nbsp;The Channel</div>
+      <h2>The channel where HelloFresh wins next.</h2>
+    </div>
+    <div class="split">
+      <div class="rv">
+        <p class="statement">TikTok rewards <em>volume &amp; iteration.</em> So does our system.</p>
+        <ul class="arglist">
+          <li><span class="n">01</span><p>Creative volume is the #1 lever on TikTok — and our model is built to ship it, week after week.</p></li>
+          <li><span class="n">02</span><p>Lower CPMs than Meta when creative is native, fresh and tested at pace.</p></li>
+          <li><span class="n">03</span><p>Spark Ads &amp; creator-style content compound your organic reach into paid.</p></li>
+          <li><span class="n">04</span><p>Per-market accounts let us scale proven winners country by country.</p></li>
+        </ul>
+      </div>
+      <div class="panel rv">
+        <h3>Our TikTok operating rhythm</h3>
+        <div class="pr"><span class="k">Structured tests</span><span class="v">2–3 / week / channel</span></div>
+        <div class="pr"><span class="k">New ads shipped</span><span class="v">10–20 / week / channel</span></div>
+        <div class="pr"><span class="k">Optimization &amp; checks</span><span class="v">Daily</span></div>
+        <div class="pr"><span class="k">Scaling on winners</span><span class="v">Incl. weekends</span></div>
+        <div class="pr"><span class="k">Efficiency control</span><span class="v">Cost caps · tROAS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 APPROACH / IN-HOUSING -->
+<section class="blk" id="approach">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick"><b>(04)</b> &nbsp;The Approach</div>
+      <h2>Run it for you. <em>Then</em> hand it over.</h2>
+    </div>
+    <p class="lead-2 rv">The goal isn't a forever-retainer. It's to take over, prove the system, and build a HelloFresh in-house buyer who runs TikTok at the same standard. Two clear steps — with the creative framework running in parallel.</p>
+
+    <div class="steps rv">
+      <div class="stp one">
+        <div class="ghost">01</div>
+        <div class="tag"><b>Step 01</b> — Months 1–3 · We run it</div>
+        <h3>Takeover &amp; Scale</h3>
+        <ul>
+          <li>Take over all <b>6 TikTok ad accounts</b> &amp; tracking</li>
+          <li>Rebuild structure — testing → scaling architecture</li>
+          <li><b>2–3 tests / week</b> per channel: angles, hooks, audiences</li>
+          <li><b>10–20 new ads / week</b> per channel into the engine</li>
+          <li>Daily optimization, weekend scaling on winners</li>
+          <li>Weekly reporting &amp; clear performance read-outs</li>
+        </ul>
+      </div>
+      <div class="stp two">
+        <div class="ghost">02</div>
+        <div class="tag"><b>Step 02</b> — Months 2–4 · You own it</div>
+        <h3>In-House Enablement</h3>
+        <ul>
+          <li>Help you hire / select the right in-house buyer</li>
+          <li>Structured education — our SOPs, playbooks, checklists</li>
+          <li>Shadowing — they work the accounts alongside us</li>
+          <li>Creative framework &amp; briefing process handed over</li>
+          <li>Gradual ownership transfer, account by account</li>
+          <li>Post-handover support so nothing breaks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fw rv">
+      <div class="kick">Runs in parallel from week 2</div>
+      <h3>E-Commerce Consulting Based on Real Numbers</h3>
+      <p>We create systems, especially creative systems, for handling multiple ads at once. Real performance data decides what gets tested, what gets paused, and where budget moves next.</p>
+      <div class="flow">
+        <div class="node"><div class="ph">Phase 1</div><h4>ABO — Test everything</h4><p>Ad-set budget optimization. Isolate angles, hooks &amp; audiences for clean, cheap reads on what works.</p></div>
+        <div class="ar">→</div>
+        <div class="node"><div class="ph">Phase 2</div><h4>Consolidate → CBO</h4><p>Move proven winners into campaign-budget optimization. Let the algorithm push spend to the best.</p></div>
+        <div class="ar">→</div>
+        <div class="node"><div class="ph">Phase 3</div><h4>Scale — caps &amp; tROAS</h4><p>Scale spend while protecting efficiency with cost caps and target-ROAS bidding. Profit, not vanity.</p></div>
+      </div>
+    </div>
+
+    <div class="consult rv">
+      <div class="cg">03</div>
+      <div>
+        <div class="ph">Phase 03 — After handover · Ongoing</div>
+        <h3>Strategy Consulting</h3>
+        <p>Once your in-house buyer owns TikTok, we stay in your corner — a monthly call to pressure-test the account, sanity-check scaling decisions, and keep your buyer sharp on strategy &amp; structure.</p>
+      </div>
+      <div class="facts">€1,000 / month<br><b>1 strategy call / month</b><br>Strategy · Structure · Review</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PLAN / GANTT -->
+<section class="blk" id="plan">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick"><b>(05)</b> &nbsp;The Plan</div>
+      <h2>16 weeks: from takeover to a self-running team.</h2>
+    </div>
+    <p class="lead-2 rv">Media buying leads; in-housing follows once the system is proven. The creative framework runs throughout.</p>
+
+    <div class="plan-wrap rv">
+      <div class="gantt">
+        <div class="g-head">
+          <div></div>
+          <div class="mh" style="grid-column:2 / span 4">Month 01</div>
+          <div class="mh" style="grid-column:6 / span 4">Month 02</div>
+          <div class="mh" style="grid-column:10 / span 4">Month 03</div>
+          <div class="mh" style="grid-column:14 / span 4">Month 04</div>
+        </div>
+        <div class="g-weeks">
+          <div class="c0">Workstream</div>
+          <span>W1</span><span>W2</span><span>W3</span><span>W4</span>
+          <span>W5</span><span>W6</span><span>W7</span><span>W8</span>
+          <span>W9</span><span>W10</span><span>W11</span><span>W12</span>
+          <span>W13</span><span>W14</span><span>W15</span><span>W16</span>
+        </div>
+
+        <div class="grow"><div class="t"><span class="pin" style="background:var(--plum)"></span>Onboarding, access &amp; tracking</div><div class="gtrack"><div class="bar b-plum" style="left:0%;width:12.5%">W1–2</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:var(--plum)"></span>Account &amp; campaign structuring</div><div class="gtrack"><div class="bar b-plum" style="left:6.25%;width:18.75%">W2–4</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:var(--pink)"></span>Testing engine — ABO</div><div class="gtrack"><div class="bar b-pink" style="left:6.25%;width:37.5%">W2–7 · test everything</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:var(--plum)"></span>Consolidate winners → CBO</div><div class="gtrack"><div class="bar b-plum" style="left:31.25%;width:31.25%">W6–10</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:var(--lime)"></span>Scale — cost caps &amp; tROAS</div><div class="gtrack"><div class="bar b-lime" style="left:50%;width:50%">W9–16</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:#f3a9c4"></span>Creative framework</div><div class="gtrack"><div class="bar b-pinkS" style="left:6.25%;width:93.75%">Ongoing · 10–20 ads / wk / channel</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:var(--ink-2)"></span>In-house buyer — hire &amp; onboard</div><div class="gtrack"><div class="bar b-ink" style="left:31.25%;width:25%">W6–9</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:#f3a9c4"></span>In-house — training &amp; shadowing</div><div class="gtrack"><div class="bar b-pinkS" style="left:50%;width:43.75%">W9–15</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:var(--lime)"></span>Handover &amp; autonomy</div><div class="gtrack"><div class="bar b-lime" style="left:81.25%;width:18.75%">W14–16</div></div></div>
+        <div class="grow"><div class="t"><span class="pin" style="background:transparent;border:1.5px dashed var(--lime-deep)"></span>Consulting · 1 call / month</div><div class="gtrack"><div class="bar b-out" style="left:87.5%;width:12.5%">→ ongoing</div></div></div>
+      </div>
+    </div>
+    <div class="legend rv">
+      <span><i style="background:var(--plum)"></i>Setup &amp; build</span>
+      <span><i style="background:var(--pink)"></i>Testing &amp; creative</span>
+      <span><i style="background:var(--lime)"></i>Scale &amp; handover</span>
+      <span><i style="background:var(--ink-2)"></i>In-house enablement</span>
+      <span><i style="background:transparent;border:1.5px dashed var(--lime-deep)"></i>Consulting (ongoing)</span>
+    </div>
+    <p class="plan-note rv">Indicative — adjusts to access turnaround &amp; hiring speed. Step 01 front-loads months 1–3; Step 02 ramps from month 2. From week 16 onward: ongoing consulting — one strategy &amp; structure call per month.</p>
+  </div>
+</section>
+
+<!-- 06 SUPPORT -->
+<section class="blk dark" id="support">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick"><b>(06)</b> &nbsp;How We Work</div>
+      <h2>Reachable every day. <em>Scaling</em> on weekends.</h2>
+    </div>
+    <p class="lead-2 rv">Performance doesn't pause on Saturday — and neither do we. You get a partner that treats your accounts like our own, every day of the week.</p>
+    <div class="sup rv">
+      <div class="s"><div class="n">01</div><h3>Daily reachability</h3><p>A direct line to your buyer on Slack / WhatsApp. Fast answers, no account-manager wall.</p></div>
+      <div class="s"><div class="n">02</div><h3>Weekend scaling</h3><p>We monitor and scale live winners on weekends, when CPMs and intent often shift.</p></div>
+      <div class="s"><div class="n">03</div><h3>Daily ad checks</h3><p>Every account reviewed daily — pacing, winners, fatigue and anomalies.</p></div>
+      <div class="s"><div class="n">04</div><h3>Premium support</h3><p>Priority response, proactive flags, and a senior buyer on the business — never a junior.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 INVESTMENT -->
+<section class="blk" id="investment">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick"><b>(07)</b> &nbsp;Investment</div>
+      <h2>Six TikTok channels. <em>One</em> flat rate.</h2>
+    </div>
+    <div class="price-top rv">
+      <div class="bignum">€21,000<span class="per">All-in partnership / month</span></div>
+      <div class="price-break">
+        6 channels <b>×</b> €3,500<br>per channel / month<br><span style="color:var(--lime-deep)">Wind down as your team takes over</span>
+      </div>
+    </div>
+
+    <div class="chan rv">
+      <div class="r"><span class="id">TT-01</span><span class="sc">Full media buying · testing · scaling</span><span class="am">€3,500</span></div>
+      <div class="r"><span class="id">TT-02</span><span class="sc">Full media buying · testing · scaling</span><span class="am">€3,500</span></div>
+      <div class="r"><span class="id">TT-03</span><span class="sc">Full media buying · testing · scaling</span><span class="am">€3,500</span></div>
+      <div class="r"><span class="id">TT-04</span><span class="sc">Full media buying · testing · scaling</span><span class="am">€3,500</span></div>
+      <div class="r"><span class="id">TT-05</span><span class="sc">Full media buying · testing · scaling</span><span class="am">€3,500</span></div>
+      <div class="r"><span class="id">TT-06</span><span class="sc">Full media buying · testing · scaling</span><span class="am">€3,500</span></div>
+      <div class="tot"><span class="id">Total</span><span class="sc">6 × TikTok · monthly retainer</span><span class="am">€21,000 <span class="pink">/mo</span></span></div>
+    </div>
+
+    <div class="incl rv">
+      <div>Dedicated senior TikTok media buyer</div>
+      <div>Account takeover &amp; full restructure</div>
+      <div>2–3 structured tests per week</div>
+      <div>10–20 new ads per week</div>
+      <div>Daily optimization &amp; ad checks</div>
+      <div>Weekend monitoring &amp; scaling</div>
+      <div>ABO → CBO → cost-cap / tROAS scaling</div>
+      <div>Creative &amp; budget framework + briefs</div>
+      <div>Weekly reporting &amp; performance reviews</div>
+      <div>In-house enablement &amp; training (Step 02)</div>
+      <div>Slack / WhatsApp premium support</div>
+      <div>Daily reachability — incl. weekends</div>
+    </div>
+
+    <div class="tier2 rv">
+      <div>
+        <div class="ph">After in-housing · Ongoing retainer</div>
+        <h3>Strategy Consulting</h3>
+        <p>When we've handed over, k&amp;einsocial stays available for your in-house buyer — one strategy &amp; structure call per month to keep TikTok scaling on track.</p>
+      </div>
+      <div class="amt">€1,000<span>per month · 1 call</span></div>
+    </div>
+
+    <div class="price-notes rv">
+      <p>Channels map to your chosen <b>markets or brands</b> (e.g. DE · AT · CH …) — fully flexible. Media spend (the ad budget paid to TikTok) is <b>separate</b> and billed directly by HelloFresh.</p>
+      <p>As your in-house buyer takes ownership, channels can be <b>wound down individually</b> — you only pay for what we still run.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 LEVERAGE WITH AI -->
+<section class="blk" id="ai">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick"><b>(08)</b> &nbsp;Leverage with AI</div>
+      <h2>We don't just buy media. We <em>engineer</em> the scale.</h2>
+    </div>
+    <p class="lead-2 rv">The volume promised above — 10–20 fresh ads per week per channel, daily &amp; weekend scaling — is only possible because we run our own AI software stack. Here's a 4-minute look at the tooling behind it.</p>
+
+    <div class="rv">
+      <div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(64.67%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/jX5zFyfCxuoeX0vvzIP9?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>
+      <div class="ai-cap">
+        <span>Overview — Marketing Automation &amp; Influencer Tools · 4:24 · Edvin Dizdaric</span>
+        <a href="https://kommodo.ai/recordings/jX5zFyfCxuoeX0vvzIP9" target="_blank" rel="noopener">Watch on Kommodo ↗</a>
+      </div>
+    </div>
+
+    <div class="mabted rv">
+      <div>
+        <div class="ey">Powered by</div>
+        <h3>MABTED<span class="dot">.</span></h3>
+        <div class="desc">Our sister software company — performance-marketing automation for e-commerce. The same engine we point at your TikTok accounts: bulk ad creation, agentic 24/7 budget scaling, and AI-generated creatives.</div>
+        <div class="chips">
+          <span class="chip"><i style="background:#a855f7"></i>Bulk Tool</span>
+          <span class="chip"><i style="background:#3b82f6"></i>Scaling Tool</span>
+          <span class="chip"><i style="background:#ec4899"></i>Influencer Tool</span>
+          <span class="chip"><i style="background:#f97316"></i>Creative Suite</span>
+          <span class="chip"><i style="background:#f59e0b"></i>Listing Writer</span>
+        </div>
+        <div class="trust">Trusted by SNOCKS · Oceans Apart · Femtis · Bergmensch</div>
+      </div>
+      <div class="aside">
+        <p><b>Why it matters for HelloFresh:</b> bulk creation ships the <b>10–20 ads / week</b>, the agentic scaler runs <b>24/7 incl. weekends</b>, and the Creative Suite keeps angles fresh — the AI muscle behind the operating rhythm in section 03.</p>
+        <a class="mlink" href="https://www.mabted.com" target="_blank" rel="noopener">mabted.com ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="blk final" id="contact">
+  <div class="wrap">
+    <div class="kick rv">Let's start</div>
+    <h2 class="rv">Take over TikTok in 16 weeks. <em>Hand it</em> to your team for good.</h2>
+    <p class="rv">Lock the kickoff, get access to the six accounts, and we'll have fresh ads in-market within the first two weeks.</p>
+    <div class="next rv">
+      <div class="ns"><div class="n">01</div><h4>Approve &amp; sign</h4></div>
+      <div class="ns"><div class="n">02</div><h4>Grant account access</h4></div>
+      <div class="ns"><div class="n">03</div><h4>Kickoff &amp; first tests live</h4></div>
+    </div>
+    <div class="cta-row rv">
+      <a class="btn solid" href="mailto:edi@keinsocial.com?subject=HelloFresh%20%E2%9C%95%20k%26einsocial%20%E2%80%94%20TikTok%20Partnership">Email edi@keinsocial.com</a>
+      <a class="btn out" href="https://www.keinsocial.com">keinsocial.com ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="lock">k<span style="color:var(--pink)">&amp;</span>einsocial <span style="opacity:.5">✕</span> <span style="font-family:var(--serif);font-style:italic;color:var(--lime)">HelloFresh</span></span>
+    <span>Confidential · Prepared Jun 2026</span>
+    <span><a href="mailto:edi@keinsocial.com">edi@keinsocial.com</a> · <a href="https://www.keinsocial.com">keinsocial.com</a></span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    if(!('IntersectionObserver' in window)){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
